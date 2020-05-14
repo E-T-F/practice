@@ -7,12 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
+        <module name="common" />
+        <module name="dao" />
         <module name="service" />
         <module name="web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api" target="1.8" />
+      <module name="basics" target="1.8" />
       <module name="cache" target="1.8" />
       <module name="common" target="1.8" />
       <module name="dao" target="1.8" />

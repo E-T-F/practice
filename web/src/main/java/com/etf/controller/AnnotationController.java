@@ -125,7 +125,6 @@ public class AnnotationController {
 
 
     /**
-     * 首页人气作品榜，随机6个展示
      *
      * @param status
      * @return

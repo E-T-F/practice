@@ -9,7 +9,7 @@
 
 /.idea
 .settings
-*.sql
+*.com.etf.sql
 /logs
 /bin/
 src/main/webapp/WEB-INF/lib*

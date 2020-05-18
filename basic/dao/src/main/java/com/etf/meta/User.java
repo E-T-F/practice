@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * @Auther: etf
@@ -34,14 +35,18 @@ public class User implements Serializable {
     private String nickName;
 
     @Column(nullable = false)
-    private String regTime;
+    private LocalDateTime regTime;
 
-    public User(String userName, String passWord, String email, String nickName, String regTime) {
+    @Column(nullable = false)
+    private Integer status;
+
+    public User(String userName, String passWord, String email, String nickName, LocalDateTime regTime, Integer status) {
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
         this.nickName = nickName;
         this.regTime = regTime;
+        this.status = status;
     }
 
     public User() {

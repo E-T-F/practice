@@ -36,7 +36,11 @@
             <artifactId>druid</artifactId>
             <version>1.1.14</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.practice</groupId>
+            <artifactId>cache</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

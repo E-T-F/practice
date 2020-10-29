@@ -8,6 +8,7 @@
         <module>web</module>
         <module>api</module>
         <module>basic</module>
+        <module>test</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

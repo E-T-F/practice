@@ -24,9 +24,32 @@ public class removeElement {
      */
     public static void main(String[] args) {
         int[] nums = {0, 1, 2, 2, 3, 0, 4, 2};
-        System.out.println(removeElement(nums, 2));
+        System.out.println(removeElement2(nums, 2));
     }
 
+
+
+
+    /**
+     * 快慢指针，循环遍历，快指针找寻到不等于val的数据就复制给慢指针，复制完成递增快慢指针
+     * @param nums
+     * @param val
+     * @return
+     */
+    public static int removeElement2(int[] nums, int val) {
+
+        int slow = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[slow] = nums[i];
+                slow++;
+            }
+
+        }
+        System.out.println(Arrays.toString(nums));
+        return slow;
+    }
 
     /**
      * @param nums

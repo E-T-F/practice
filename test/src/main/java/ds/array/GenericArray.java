@@ -180,4 +180,16 @@ public class GenericArray<T> {
         data = newData;
     }
 
+    public static void main(String[] args) {
+        GenericArray<String> genericArray = new GenericArray<>();
+        System.out.println(genericArray.find("123"));
+        genericArray.addLast("12");
+        genericArray.addLast("123");
+        genericArray.addFirst("1");
+        genericArray.add(3, "12345");
+        genericArray.remove(3);
+        System.out.println(genericArray.toString());
+        System.out.println(genericArray.find("123"));
+
+    }
 }

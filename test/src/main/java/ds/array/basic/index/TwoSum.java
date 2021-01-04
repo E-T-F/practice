@@ -15,7 +15,7 @@ import java.util.Arrays;
  * 作者：力扣 (LeetCode)
  * 链接：https://leetcode-cn.com/leetbook/read/all-about-array/x9i1x6/
  */
-public class twoSum {
+public class TwoSum {
 
 
     public static void main(String[] args) {

@@ -11,13 +11,13 @@ public class SinglyLinkedList<T> {
 
     public Node<T> findByValue(T value) {
         Node<T> temp = head;
-        while (temp != null && temp.getData().equals(value)) {
+        while (temp != null && !temp.getData().equals(value)) {
             temp = temp.getNext();
         }
         return temp;
     }
 
-    public Node findByIndex(int index) {
+    public Node<T> findByIndex(int index) {
         Node<T> temp = head;
         int pos = 0;
         while (temp != null && pos != index) {
@@ -160,13 +160,19 @@ public class SinglyLinkedList<T> {
      */
 
 
-
     // 1. 求链表的中间结点
-//    public Node<T> getMiddleNode() {
-//        Node<T> temp = head;
-//
-//
-//    }
+    public Node<T> getMiddleNode() {
+        Node<T> slow = head;
+        Node<T> quick = head;
+        if (slow == null || slow.getNext() == null) {
+            return slow;
+        }
+        while (quick.getNext() != null && quick.getNext().getNext() != null) {
+            slow = slow.getNext();
+            quick = quick.getNext().getNext();
+        }
+        return slow;
+    }
 
     // 2. 链表反转
     // 3. 链表中环的检测
@@ -174,6 +180,18 @@ public class SinglyLinkedList<T> {
     // 5. 删除链表倒数第 n 个结点
     // 6. 判断回文
 
+    public static void main(String[]args) {
 
+        SinglyLinkedList<Integer> link = new SinglyLinkedList<Integer>();
+        int data[] = {1,2,3,1};
+        // int data[] = {1,2,5,2,1};
+//        int data[] = {1, 2, 5, 3, 1};
 
+        for (int i = 0; i < data.length; i++) {
+            //link.insertToHead(data[i]);
+            link.insertToTail(data[i]);
+        }
+        link.printAll();
+        System.out.println(link.getMiddleNode().getData());
+    }
 }

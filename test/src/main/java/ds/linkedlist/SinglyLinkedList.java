@@ -175,6 +175,37 @@ public class SinglyLinkedList<T> {
     }
 
     // 2. 链表反转
+    public Node<T> inverseLinkList(Node<T> head){
+
+        Node<T> pre = null;
+        Node<T> current = head;
+
+        while (current != null) {
+             Node<T> temp = current.getNext();
+             current.setNext(pre);
+             pre = current;
+             current = temp;
+        }
+        return pre;
+    }
+
+    public Node<T> inverseLinkListWithRecursion(Node<T> head){
+
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+
+        Node<T> newHead = inverseLinkListWithRecursion(head.getNext());
+        head.getNext().setNext(head);
+        head.setNext(null);
+        return newHead;
+
+    }
+
+
+
+
+
     // 3. 链表中环的检测
     // 4. 两个有序的链表合并
     // 5. 删除链表倒数第 n 个结点
@@ -183,7 +214,7 @@ public class SinglyLinkedList<T> {
     public static void main(String[]args) {
 
         SinglyLinkedList<Integer> link = new SinglyLinkedList<Integer>();
-        int data[] = {1,2,3,1};
+        int data[] = {1,2,3,4};
         // int data[] = {1,2,5,2,1};
 //        int data[] = {1, 2, 5, 3, 1};
 
@@ -192,6 +223,16 @@ public class SinglyLinkedList<T> {
             link.insertToTail(data[i]);
         }
         link.printAll();
-        System.out.println(link.getMiddleNode().getData());
+
+        Node r = link.inverseLinkListWithRecursion(link.head);
+
+
+        while(r != null){
+            System.out.println("aa:"+r.getData());
+            r = r.getNext();
+        }
+
+
+         System.out.println(link.getMiddleNode().getData());
     }
 }

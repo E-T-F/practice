@@ -1,5 +1,8 @@
 package ds.linkedlist;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @Auther: etf
  * @Date: 2020-10-31 14:54
@@ -175,21 +178,21 @@ public class SinglyLinkedList<T> {
     }
 
     // 2. 链表反转
-    public Node<T> inverseLinkList(Node<T> head){
+    public Node<T> inverseLinkList(Node<T> head) {
 
         Node<T> pre = null;
         Node<T> current = head;
 
         while (current != null) {
-             Node<T> temp = current.getNext();
-             current.setNext(pre);
-             pre = current;
-             current = temp;
+            Node<T> temp = current.getNext();
+            current.setNext(pre);
+            pre = current;
+            current = temp;
         }
         return pre;
     }
 
-    public Node<T> inverseLinkListWithRecursion(Node<T> head){
+    public Node<T> inverseLinkListWithRecursion(Node<T> head) {
 
         if (head == null || head.getNext() == null) {
             return head;
@@ -203,18 +206,70 @@ public class SinglyLinkedList<T> {
     }
 
 
-
-
-
     // 3. 链表中环的检测
+    public boolean hasCycle(Node<T> head) {
+        Node<T> quick = head;
+        Node<T> slow = head;
+
+        if (head == null || head.getNext() == null) {
+            return false;
+        }
+
+        while (slow.getNext() != null && quick.getNext().getNext() != null) {
+            slow = slow.getNext();
+            quick = quick.getNext().getNext();
+
+            if (quick == null || quick.getNext() == null) {
+                return false;
+            }
+            if (quick == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean hasCycle2(Node<T> head) {
+        Node<T> quick = head;
+        Node<T> slow = head;
+
+        if (head == null || head.getNext() == null) {
+            return false;
+        }
+        quick = quick.getNext().getNext();
+        slow = slow.getNext();
+
+        while (quick != slow) {
+            if (quick == null || quick.getNext() == null) {
+                return false;
+            }
+            quick = quick.getNext().getNext();
+            slow = slow.getNext();
+        }
+        return true;
+    }
+
+    public boolean hasCycle3(Node<T> head) {
+        Set<Node<T>> set = new HashSet<>();
+        Node<T> node = head;
+        while (node != null) {
+            if (!set.add(node)) {
+                return true;
+            }
+            node = node.getNext();
+        }
+        return false;
+    }
+
     // 4. 两个有序的链表合并
     // 5. 删除链表倒数第 n 个结点
     // 6. 判断回文
 
-    public static void main(String[]args) {
+    public static void main(String[] args) {
 
         SinglyLinkedList<Integer> link = new SinglyLinkedList<Integer>();
-        int data[] = {1,2,3,4};
+        int data[] = {1, 2, 3, 4};
         // int data[] = {1,2,5,2,1};
 //        int data[] = {1, 2, 5, 3, 1};
 
@@ -222,17 +277,13 @@ public class SinglyLinkedList<T> {
             //link.insertToHead(data[i]);
             link.insertToTail(data[i]);
         }
+
+
+        Node<Integer> node = new Node<>(5, link.findByIndex(2));
+        link.insertAfter(link.findByIndex(3), node);
+
         link.printAll();
 
-        Node r = link.inverseLinkListWithRecursion(link.head);
-
-
-        while(r != null){
-            System.out.println("aa:"+r.getData());
-            r = r.getNext();
-        }
-
-
-         System.out.println(link.getMiddleNode().getData());
+        System.out.println(link.hasCycle(link.head));
     }
 }

@@ -1,7 +1,9 @@
 package ds.linkedlist;
 
 /**
+ *
  * https://leetcode-cn.com/problems/design-linked-list/
+ *
  *
  * @Auther: etf
  * @Date: 2021-01-12 23:34
@@ -9,36 +11,35 @@ package ds.linkedlist;
  */
 
 
-class MyNode2 {
+class MyNode {
     int val;
-    MyNode2 next;
+    MyNode next;
 
-    MyNode2(int val, MyNode2 next) {
+    MyNode(int val, MyNode next) {
         this.val = val;
         this.next = next;
     }
 }
 
-public class MyLinkedList {
+public class MyLinkedListWithHead {
 
 
     public static void main(String[] args) {
-        MyLinkedList linkedList = new MyLinkedList();
+        MyLinkedListWithHead linkedList = new MyLinkedListWithHead();
         linkedList.addAtHead(1);
-        linkedList.addAtHead(10);
-        linkedList.addAtTail(2);
         linkedList.printAll();
         linkedList.deleteAtIndex(0);
         linkedList.printAll();
 
     }
 
-    MyNode2 head = null;
-    int size = 0;
+    MyNode head = null;
+
+    int size;
 
 
     public void printAll() {
-        MyNode2 temp = head;
+        MyNode temp = head;
 
         while (temp != null) {
             System.out.println(temp.val + " ");
@@ -50,47 +51,38 @@ public class MyLinkedList {
     /**
      * Initialize your data structure here.
      */
-    public MyLinkedList() {
+    public MyLinkedListWithHead() {
+        size = 0;
+        head = new MyNode(0, null);
     }
 
     /**
      * Get the value of the index-th node in the linked list. If the index is invalid, return -1.
      */
     public int get(int index) {
+
         if (index < 0 || index >= size) {
             return -1;
         }
-
-        MyNode2 temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
+        MyNode node = head;
+        for (int i = 0; i <= index; i++) {
+            node = node.next;
         }
-        return temp.val;
+        return node.val;
     }
 
     /**
      * Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.
      */
     public void addAtHead(int val) {
-        size++;
-        head = new MyNode2(val, head);
+        addAtIndex(0, val);
     }
 
     /**
      * Append a node of value val to the last element of the linked list.
      */
     public void addAtTail(int val) {
-        MyNode2 node = new MyNode2(val, null);
-        size++;
-        if (head == null) {
-            head = node;
-        } else {
-            MyNode2 temp = head;
-            while (temp.next != null) {
-                temp = temp.next;
-            }
-            temp.next = node;
-        }
+        addAtIndex(size, val);
     }
 
     /**
@@ -100,25 +92,21 @@ public class MyLinkedList {
      * the length, the node will not be inserted.
      */
     public void addAtIndex(int index, int val) {
-        if (index < 0) {
-            index = 0;
-        }
+
         if (index > size) {
             return;
         }
 
-        if (index == 0) {
-            this.addAtHead(val);
-            return;
+        if (index < 0) {
+            index = 0;
         }
 
-        MyNode2 pre = head;
-        for (int i = 0; i < index - 1; i++) {
+        ++size;
+        MyNode pre = head;
+        for (int i = 0; i < index; i++) {
             pre = pre.next;
         }
-
-        size++;
-        pre.next = new MyNode2(val, pre.next);
+        pre.next = new MyNode(val, pre.next);
     }
 
     /**
@@ -128,16 +116,11 @@ public class MyLinkedList {
         if (index < 0 || index >= size) {
             return;
         }
-
         size--;
-        if (index == 0) {
-            head = head.next;
-            return;
-        }
 
-        MyNode2 pre = head;
+        MyNode pre = head;
 
-        for (int i = 0; i < index - 1; i++) {
+        for (int i = 0; i < index; i++) {
             pre = pre.next;
         }
         pre.next = pre.next.next;

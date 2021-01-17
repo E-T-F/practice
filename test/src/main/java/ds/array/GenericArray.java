@@ -181,7 +181,7 @@ public class GenericArray<T> {
     }
 
     public static void main(String[] args) {
-        GenericArray<String> genericArray = new GenericArray<>();
+        GenericArray<String> genericArray = new ds.array.GenericArray<String>();
         System.out.println(genericArray.find("123"));
         genericArray.addLast("12");
         genericArray.addLast("123");

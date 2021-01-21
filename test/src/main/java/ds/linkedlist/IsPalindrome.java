@@ -1,5 +1,7 @@
 package ds.linkedlist;
 
+import java.util.ArrayList;
+
 /**
  * 回文链表
  * 请判断一个链表是否为回文链表。
@@ -77,4 +79,45 @@ public class IsPalindrome {
         }
         return slow;
     }
+
+
+    public boolean isPalindrome2(ListNode head) {
+        ArrayList<Integer> temp = new ArrayList<>();
+        ListNode cur = head;
+        while (cur != null) {
+            temp.add(cur.val);
+            cur = cur.next;
+        }
+        int start = 0;
+        int end = temp.size() - 1;
+        while (start < end) {
+            if (!temp.get(start).equals(temp.get(end))) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+
+
+    ListNode frontHead;
+    public boolean isPalindrome3(ListNode head) {
+        frontHead = head;
+        return recursiveCheck(head);
+    }
+
+    private boolean recursiveCheck(ListNode cur) {
+        if (cur != null) {
+            if (!recursiveCheck(cur.next)) {
+                return false;
+            }
+            if (cur.val != frontHead.val) {
+                return false;
+            }
+            frontHead = frontHead.next;
+        }
+        return true;
+    }
+
 }

@@ -1,5 +1,7 @@
 package ds.linkedlist;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 
 /**
@@ -52,6 +54,34 @@ public class Flatten {
     }
 
     public ChildNode flatten(ChildNode head) {
+        if (head == null) {
+            return head;
+        }
+
+        ChildNode tempHead = new ChildNode(0);
+
+        ChildNode prev = tempHead;
+        Deque<ChildNode> stack = new ArrayDeque<>();
+        stack.push(head);
+        while (!stack.isEmpty()) {
+            ChildNode curr = stack.pop();
+            curr.prev = prev;
+            prev.next = curr;
+            if (curr.next != null) {
+                stack.push(curr.next);
+            }
+
+            if (curr.child != null) {
+                stack.push(curr.child);
+                curr.child = null;
+            }
+            prev = curr;
+        }
+        tempHead.next.prev = null;
+        return tempHead.next;
+    }
+
+    public ChildNode flatten2(ChildNode head) {
         ChildNode temp = head;
         LinkedList<ChildNode> lastLevel = new LinkedList<>();
         while (temp != null) {
@@ -72,6 +102,41 @@ public class Flatten {
             temp = temp.next;
         }
         return head;
+    }
+
+
+    public ChildNode flattenWithRecursion(ChildNode head) {
+        if (head == null) {
+            return null;
+        }
+        ChildNode tempHead = new ChildNode(0);
+        flattenDfs(tempHead, head);
+
+        return tempHead.next;
+    }
+
+    /**
+     * 返回tail结点
+     *
+     * @param prev
+     * @param curr
+     * @return
+     */
+    private ChildNode flattenDfs(ChildNode prev, ChildNode curr) {
+        if (curr == null) {
+            return prev;
+        }
+        prev.next = curr;
+        curr.prev = prev;
+
+        ChildNode temp = curr.next;
+
+        ChildNode tail = flattenDfs(curr, curr.child);
+
+        curr.child = null;
+
+        return flattenDfs(tail, temp);
+
     }
 }
 

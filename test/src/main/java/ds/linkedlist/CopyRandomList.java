@@ -1,4 +1,4 @@
-package ds.array.basic.index;
+package ds.linkedlist;
 
 import java.util.HashMap;
 

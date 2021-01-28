@@ -1,4 +1,4 @@
-package ds.array.basic.index;
+package ds.linkedlist;
 
 /**
  * 旋转链表
@@ -82,23 +82,5 @@ public class RotateRight {
         cur.next = head;
         return res;
 
-    }
-}
-
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
     }
 }

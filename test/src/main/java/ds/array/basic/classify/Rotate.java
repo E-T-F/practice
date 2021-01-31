@@ -106,7 +106,7 @@ public class Rotate {
      * 故 an 就是 n,k 的最小公倍数 lcm(n,k)
      * 即 b = lcm(n,k) / k;
      *
-     * 需要遍历总次数： b * n = n * k / lcm(n,k) = gcd(n,k)
+     * 需要遍历总次数： n / b = n * k / lcm(n,k) = gcd(n,k)
      *
      * @param nums
      * @param k

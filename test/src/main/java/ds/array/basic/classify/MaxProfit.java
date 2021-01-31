@@ -4,6 +4,7 @@ public class MaxProfit {
 
     /**
      * 动态规划
+     *
      * @param prices
      * @return
      */
@@ -24,6 +25,7 @@ public class MaxProfit {
 
     /**
      * 贪心
+     *
      * @param prices
      * @return
      */
@@ -35,5 +37,4 @@ public class MaxProfit {
         return profit;
     }
 
-
-    }
+}

@@ -69,6 +69,11 @@ public class Rotate {
     }
 
 
+    /**
+     * 循环赋值，一轮完毕后从下一个位置进行，直到赋值的个数等于数组长度
+     * @param nums
+     * @param k
+     */
     public void rotate3(int[] nums, int k) {
         int len = nums.length;
         k %= len;
@@ -90,5 +95,40 @@ public class Rotate {
             } while (i != start);
             i++;
         }
+    }
+
+
+    /**
+     * 循环赋值，回到初始位置从下一个数字开始
+     *
+     * 回到了起点，即恰好走了整数数量的圈，设为 a；单次遍历了 b 个元素
+     * a * n = b * k ， 即 an 一定为 n,k 的公倍数，又因为 a 要尽可能小（第一次遍历完就结束）
+     * 故 an 就是 n,k 的最小公倍数 lcm(n,k)
+     * 即 b = lcm(n,k) / k;
+     *
+     * 需要遍历总次数： b * n = n * k / lcm(n,k) = gcd(n,k)
+     *
+     * @param nums
+     * @param k
+     */
+    public void rotate4(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n;
+        int count = gcd(k, n);
+        for (int start = 0; start < count; ++start) {
+            int current = start;
+            int prev = nums[start];
+            do {
+                int next = (current + k) % n;
+                int temp = nums[next];
+                nums[next] = prev;
+                prev = temp;
+                current = next;
+            } while (start != current);
+        }
+    }
+
+    public int gcd(int x, int y) {
+        return y > 0 ? gcd(y, x % y) : x;
     }
 }

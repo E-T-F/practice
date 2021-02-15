@@ -1,6 +1,8 @@
 package ds.array.basic.index;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 两数之和 II - 输入有序数组
@@ -26,6 +28,16 @@ public class TwoSum {
 
     }
 
+    public static int[] twoSum0(int[] numbers, int target) {
+        HashMap<Integer, Integer> existed = new HashMap<>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (existed.containsKey(target - numbers[i])) {
+                return new int[] {i, existed.get(target - numbers[i])};
+            }
+            existed.put(numbers[i], i);
+        }
+        return new int[0];
+    }
 
     public static int[] twoSum(int[] numbers, int target) {
         for (int i = 0; i < numbers.length - 1; i++) {

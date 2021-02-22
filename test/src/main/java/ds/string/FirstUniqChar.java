@@ -43,6 +43,11 @@ public class FirstUniqChar {
 
     }
 
+    /**
+     * 可能返回非第一个
+     * @param s
+     * @return
+     */
     public int firstUniqChar(String s) {
 
         char[] temp = s.toCharArray();

@@ -30,6 +30,24 @@ import java.util.LinkedList;
  */
 public class IsSubStructure {
 
+    public boolean isSubStructure2(TreeNode A, TreeNode B) {
+
+        return  (A != null && B != null)
+                && (isSub2(A, B) || isSubStructure2(A.left, B) || isSubStructure2(A.right, B));
+    }
+
+    private boolean isSub2(TreeNode a, TreeNode b) {
+        if (b == null) {
+            return true;
+        }
+        if (a == null || a.val != b.val) {
+            return false;
+        }
+
+        return isSub2(a.left, b.left) && isSub2(a.right, b.right);
+
+    }
+
     public boolean isSubStructure(TreeNode A, TreeNode B) {
 
         LinkedList<TreeNode> queue = new LinkedList<>();

@@ -1,4 +1,4 @@
-package ds.dp_stock;
+package ds.dp.dp_stock;
 
 /**
  * 买卖股票的最佳时机 II
@@ -25,8 +25,8 @@ public class MaxProfit2 {
         dp[0][1] = -prices[0];
 
         //equation
-        //dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]);
-        //dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i]);
+        //ds.dp[i][k][0] = Math.max(ds.dp[i - 1][k][0], ds.dp[i - 1][k][1] + prices[i]);
+        //ds.dp[i][k][1] = Math.max(ds.dp[i - 1][k][1], ds.dp[i - 1][k - 1][0] - prices[i]);
         for (int i = 1; i < prices.length; i++) {
             dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
             dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
@@ -41,11 +41,11 @@ public class MaxProfit2 {
         int dp_i_1 = -prices[0];
 
         //equation
-        //dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]);
-        //dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i]);
+        //ds.dp[i][k][0] = Math.max(ds.dp[i - 1][k][0], ds.dp[i - 1][k][1] + prices[i]);
+        //ds.dp[i][k][1] = Math.max(ds.dp[i - 1][k][1], ds.dp[i - 1][k - 1][0] - prices[i]);
         for (int i = 1; i < prices.length; i++) {
             dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
-            //k = 1, dp[i - 1][k - 1][0] = 0
+            //k = 1, ds.dp[i - 1][k - 1][0] = 0
             dp_i_1 = Math.max(dp_i_1, dp_i_0 - prices[i]);
         }
         return dp_i_0;

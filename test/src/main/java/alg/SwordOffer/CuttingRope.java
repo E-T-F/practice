@@ -25,8 +25,8 @@ public class CuttingRope {
     }
 
     /**
-     * dp
-     * 状态转移方程： dp[i] = Max(dp[i], Max((i - j) * j, dp[i - j] * j))
+     * ds.dp
+     * 状态转移方程： ds.dp[i] = Max(ds.dp[i], Max((i - j) * j, ds.dp[i - j] * j))
      * @param n
      * @return
      */

@@ -1,4 +1,4 @@
-package ds.dp_stock;
+package ds.dp.dp_stock;
 
 /**
  * 买卖股票的最佳时机 III
@@ -32,8 +32,8 @@ public class MaxProfit3 {
         }
 
         //equation
-        //dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]);
-        //dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i]);
+        //ds.dp[i][k][0] = Math.max(ds.dp[i - 1][k][0], ds.dp[i - 1][k][1] + prices[i]);
+        //ds.dp[i][k][1] = Math.max(ds.dp[i - 1][k][1], ds.dp[i - 1][k - 1][0] - prices[i]);
         for (int i = 1; i < prices.length; i++) {
             for (int k = 1; k <= max_k; k++) {
                 dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]);

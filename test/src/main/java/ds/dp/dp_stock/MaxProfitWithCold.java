@@ -1,4 +1,4 @@
-package ds.dp_stock;
+package ds.dp.dp_stock;
 
 /**
  * 最佳买卖股票时机含冷冻期
@@ -29,8 +29,8 @@ public class MaxProfitWithCold {
         dp[1][1] = Math.max(dp[0][1], -prices[1]);
 
         //equation
-        //dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]);
-        //dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i]);
+        //ds.dp[i][k][0] = Math.max(ds.dp[i - 1][k][0], ds.dp[i - 1][k][1] + prices[i]);
+        //ds.dp[i][k][1] = Math.max(ds.dp[i - 1][k][1], ds.dp[i - 1][k - 1][0] - prices[i]);
         for (int i = 2; i < prices.length; i++) {
             dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
             dp[i][1] = Math.max(dp[i - 1][1], dp[i - 2][0] - prices[i]);

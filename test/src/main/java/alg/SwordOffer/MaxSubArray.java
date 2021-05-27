@@ -30,7 +30,7 @@ public class MaxSubArray {
     }
 
     public int maxSubArray(int[] nums) {
-//        dp[i] = max(val[i], dp[i - 1] + val[i]);
+//        ds.dp[i] = max(val[i], ds.dp[i - 1] + val[i]);
         int[] dp = new int[nums.length];
         dp[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {

@@ -1,6 +1,8 @@
 package alg.SwordOffer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -63,5 +65,8 @@ public class MinNumber {
     public static void main(String[] args) {
         int[] nums = {0,9,8,7,6,5,4,3,2,1};
         System.out.println(new MinNumber().minNumber(nums));
+        List l = Arrays.asList("1","2");
+        ArrayList list = new ArrayList(l);
+        list.stream().forEach(System.out::println);
     }
 }

@@ -9,6 +9,7 @@
         <module>api</module>
         <module>basic</module>
         <module>test</module>
+        <module>webrtc_demo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

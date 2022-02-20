@@ -10,6 +10,18 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LRUCache {
 
 
+    public static void main(String[] args) {
+
+        LRUCache lruCache = new LRUCache(3);
+        lruCache.put("key1", 6);
+        lruCache.put("key2", 2);
+        lruCache.put("key3", 8);
+        lruCache.printAll();
+        lruCache.put("key4", 0);
+        lruCache.printAll();
+        lruCache.get("key2");
+        lruCache.printAll();
+    }
 
     private ConcurrentHashMap<String, Node> cache = new ConcurrentHashMap<>();
     private int count;
@@ -93,6 +105,15 @@ public class LRUCache {
         post.pre = pre;
     }
 
+
+    public void printAll() {
+        Node node = head.post;
+        while (node != null && node.key != null) {
+            System.out.print(node.key + ":" + node.value + ",");
+            node = node.post;
+        }
+        System.out.println();
+    }
 
     class Node {
         String key;

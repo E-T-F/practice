@@ -1,14 +1,9 @@
-package alg.tree;
+package alg.date.date0221;
 
-/**
- * @Auther: etf
- * @Date: 2022-01-12 23:01
- * @Description:
- */
 public class TreeNode {
-    public int val;
-    public TreeNode left;
-    public TreeNode right;
+    int val;
+    TreeNode left;
+    TreeNode right;
 
     TreeNode() {
     }

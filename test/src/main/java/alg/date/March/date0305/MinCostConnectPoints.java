@@ -1,6 +1,5 @@
-package alg.date.March.date0304;
+package alg.date.March.date0305;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,33 +18,32 @@ import java.util.List;
  */
 public class MinCostConnectPoints {
 
-    //使用  Kruskal 算法
+    //使用prim算法
     public int minCostConnectPoints(int[][] points) {
         int n = points.length;
-        List<int[]> edges = new LinkedList<>();
+        List<int[]>[] graph = buildGraph(points, n);
+        return new Prim(graph).mst();
+    }
+
+    private List<int[]>[] buildGraph(int[][] points, int n) {
+        List<int[]>[] graph = new LinkedList[n];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new LinkedList<>();
+        }
+
+        // 生成所有边及权重
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 int xi = points[i][0], yi = points[i][1];
                 int xj = points[j][0], yj = points[j][1];
-                edges.add(new int[] {
-                        i, j, Math.abs(xi - xj) + Math.abs(yi - yj)});
+                int weight = Math.abs(xi - xj) + Math.abs(yi - yj);
+                graph[i].add(new int[]{i, j, weight});
+                graph[j].add(new int[]{j, i, weight});
             }
         }
-        //按权重从小到大排列
-        int mst = 0;
-        Collections.sort(edges, (a, b) -> a[2] - b[2]);
-        UnionFind unionFind = new UnionFind(n);
-        for (int[] edge : edges) {
-            int u = edge[0];
-            int v = edge[1];
-            int weight = edge[2];
-            //存在环不加入mst
-            if (unionFind.connected(u, v)) {
-                continue;
-            }
-            mst += weight;
-            unionFind.union(u, v);
-        }
-        return mst;
+        return graph;
     }
+
+
+
 }

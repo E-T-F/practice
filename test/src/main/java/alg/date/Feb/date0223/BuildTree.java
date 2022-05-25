@@ -5,7 +5,7 @@ import alg.date.Feb.date0221.TreeNode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BuildTree {
+public class    BuildTree {
 
     /**
      * 105. 从前序与中序遍历序列构造二叉树

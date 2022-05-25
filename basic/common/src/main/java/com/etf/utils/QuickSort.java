@@ -7,7 +7,8 @@ public class QuickSort {
 
     public static void main(String[] args) {
 
-        int[] arr = new int[]{1, 234, 4, 53, 3, 5};
+//        int[] arr = new int[]{1, 234, 4, 53, 3, 5};
+        int[] arr= new int[] {3,4,6,1,7,2,3};
 
 
         quickSort(arr);
@@ -24,25 +25,33 @@ public class QuickSort {
     }
 
     private static void quickSortWithPartition(int[] arr, int start, int end) {
-        if (start >= end) {
-            return;
-        }
-        int left = start;
-        int right = end;
-        int value = arr[left];
-        while (start < end) {
-            while (start < end && arr[end] > value) {
-                end--;
-            }
-            while (start < end && arr[start] < value) {
-                start++;
-            }
-            swap(arr, start, end);
-        }
-        arr[start] = value;
+       if (start >= end) {
+           return;
+       }
 
-        quickSortWithPartition(arr, left, start - 1);
-        quickSortWithPartition(arr, start + 1, right);
+       int left = start;
+       int right = end;
+       int val = arr[start];
+       while (left < right) {
+           while (left < right && arr[right] >= val) {
+               right--;
+           }
+           if (val > arr[right]) {
+               int temp = arr[right];
+               arr[right] = arr[left];
+               arr[left] = temp;
+           }
+           while (left < right && arr[left] <= val) {
+               left++;
+           }
+           if (val < arr[left]) {
+               int temp = arr[right];
+               arr[right] = arr[left];
+               arr[left] = temp;
+           }
+       }
+       quickSortWithPartition(arr, start, left - 1);
+       quickSortWithPartition(arr, left + 1, end);
     }
 
     private static void swap(int[] arr, int start, int end) {

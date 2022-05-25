@@ -8,7 +8,8 @@ public class QuickSort {
 
 
     public static void main(String[] args) {
-        int[] nums = {3, 2, 1, 5, 6, 4};
+//        int[] nums = {3, 2, 1, 5, 6, 4, 1};
+        int[] nums = new int[]{3, 4, 6, 1, 7, 2, 3};
 
         quickSort(nums);
         System.out.println(Arrays.toString(nums));

@@ -17,7 +17,7 @@ public class Rotate {
         System.out.println(Arrays.toString(nums));
     }
 
-    public static void rotate(int[] nums, int k) {
+        public static void rotate(int[] nums, int k) {
         if (nums== null || nums.length <= 1) {
             return;
         }

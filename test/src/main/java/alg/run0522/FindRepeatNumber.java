@@ -8,6 +8,34 @@ package alg.run0522;
 public class FindRepeatNumber {
 
 
+
+    public int findRepeatNumber1(int[] nums) {
+        int len = nums.length;
+        int cnt = 0;
+        for (int i = 0; i < len; i++) {
+            while (nums[i] != i) {
+                if (nums[i] == nums[nums[i]]) {
+                    return nums[i];
+                }
+                swap(nums, i, nums[i]);
+            }
+        }
+        return -1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //输入:[2, 3, 1, 0, 2, 5, 3]
     // 输出:2 或 3
     public int findRepeatNumber(int[] nums) {
